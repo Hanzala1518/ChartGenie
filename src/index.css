@@ -1,0 +1,167 @@
+/* stylelint-disable at-rule-no-unknown */
+/* Allow Tailwind directives for tools that don't recognize them */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+@layer base {
+  /* 🌊 CORAL REEF THEME - Light Mode */
+  :root {
+    /* Backgrounds - Stone palette for warm, clean neutrals */
+    --background: 24 10% 98%; /* stone-50 #F9FAFB */
+    --foreground: 24 10% 10%; /* stone-900 #1C1917 */
+    
+    /* Cards & Surfaces */
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 24 10% 10%; /* stone-900 */
+    
+    /* Popovers & Dropdowns */
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 10%;
+    
+    /* Primary - Coral Teal #1ABC9C */
+    --primary: 168 76% 42%; /* Teal */
+    --primary-foreground: 24 10% 10%; /* stone-900 for contrast */
+    
+    /* Secondary - Coral Pink #F1948A */
+    --secondary: 6 79% 75%; /* Coral */
+    --secondary-foreground: 24 10% 10%; /* stone-900 */
+    
+    /* Accent - Warm Sand #FAD7B0 */
+    --accent: 33 89% 84%; /* Sand */
+    --accent-foreground: 24 10% 10%; /* stone-900 */
+    
+    /* Muted - Subtle stone backgrounds */
+    --muted: 24 6% 90%; /* stone-200 */
+    --muted-foreground: 24 6% 46%; /* stone-500 */
+    
+    /* Destructive - Strong red (Coral too soft) */
+    --destructive: 0 72% 51%; /* #E53E3E */
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 24 6% 90%; /* stone-200 */
+    --input: 24 6% 90%; /* stone-200 */
+    --ring: 168 76% 42%; /* Teal ring for focus states */
+    
+    /* Radius - Sharper, modern 6px */
+    --radius: 0.375rem;
+  }
+
+  /* 🌙 CORAL REEF THEME - Dark Mode */
+  .dark {
+    /* Backgrounds - Deep stone for dark mode */
+    --background: 24 10% 3%; /* stone-950 #0C0A09 */
+    --foreground: 24 6% 90%; /* stone-200 #E7E5E4 */
+    
+    /* Cards & Surfaces */
+    --card: 24 10% 10%; /* stone-900 #1C1917 */
+    --card-foreground: 24 6% 90%; /* stone-200 */
+    
+    /* Popovers & Dropdowns */
+    --popover: 24 10% 10%;
+    --popover-foreground: 24 6% 90%;
+    
+    /* Primary - Coral Teal (brighter in dark mode) */
+    --primary: 168 76% 42%; /* Teal */
+    --primary-foreground: 24 10% 10%; /* stone-900 */
+    
+    /* Secondary - Coral Pink */
+    --secondary: 6 79% 75%; /* Coral */
+    --secondary-foreground: 24 10% 10%; /* stone-900 */
+    
+    /* Accent - Warm Sand */
+    --accent: 33 89% 84%; /* Sand */
+    --accent-foreground: 24 10% 10%; /* stone-900 */
+    
+    /* Muted - Dark stone backgrounds */
+    --muted: 24 10% 15%; /* stone-800 */
+    --muted-foreground: 24 6% 64%; /* stone-400 */
+    
+    /* Destructive */
+    --destructive: 0 72% 51%; /* #E53E3E */
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs - Darker stone */
+    --border: 24 10% 15%; /* stone-800 */
+    --input: 24 10% 15%; /* stone-800 */
+    --ring: 168 76% 42%; /* Teal ring */
+    
+    /* Radius - Same sharp 6px */
+    --radius: 0.375rem;
+  }
+  
+  /* 🎯 Icon Stroke Enhancement - More presence */
+  svg {
+    stroke-width: 2.25;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  .glass-card {
+    @apply glass rounded-md shadow-2xl;
+  }
+  
+  /* 🌊 Coral Reef Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#1ABC9C] via-[#F1948A] to-[#FAD7B0] bg-clip-text text-transparent;
+  }
+  
+  /* 🌊 Coral Reef Animated Background */
+  .animated-gradient {
+    background: linear-gradient(-45deg, #1ABC9C, #16A085, #F1948A, #FAD7B0);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+}
+
+/* Custom Scrollbar - Coral Reef Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/40 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/60;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+

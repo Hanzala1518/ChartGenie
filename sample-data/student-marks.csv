@@ -1,0 +1,101 @@
+StudentID,Name,Grade,Subject,Marks,Term,Teacher,Attendance,Gender,State
+S001,Emma Johnson,10,Mathematics,85,Fall,Mr. Smith,95,Female,California
+S002,Liam Brown,10,Mathematics,78,Fall,Mr. Smith,88,Male,Texas
+S003,Olivia Davis,10,Mathematics,92,Fall,Mr. Smith,97,Female,New York
+S004,Noah Wilson,10,Mathematics,67,Fall,Mr. Smith,82,Male,Florida
+S005,Ava Martinez,10,Mathematics,88,Fall,Mr. Smith,93,Female,Illinois
+S006,Elijah Anderson,10,Mathematics,73,Fall,Mr. Smith,85,Male,Pennsylvania
+S007,Sophia Thomas,10,Mathematics,95,Fall,Mr. Smith,98,Female,Ohio
+S008,Mason Taylor,10,Mathematics,81,Fall,Mr. Smith,90,Male,Georgia
+S009,Isabella Moore,10,Mathematics,89,Fall,Mr. Smith,94,Female,North Carolina
+S010,William Jackson,10,Mathematics,76,Fall,Mr. Smith,87,Male,Michigan
+S001,Emma Johnson,10,Science,88,Fall,Dr. Lee,95,Female,California
+S002,Liam Brown,10,Science,82,Fall,Dr. Lee,88,Male,Texas
+S003,Olivia Davis,10,Science,90,Fall,Dr. Lee,97,Female,New York
+S004,Noah Wilson,10,Science,71,Fall,Dr. Lee,82,Male,Florida
+S005,Ava Martinez,10,Science,86,Fall,Dr. Lee,93,Female,Illinois
+S006,Elijah Anderson,10,Science,77,Fall,Dr. Lee,85,Male,Pennsylvania
+S007,Sophia Thomas,10,Science,93,Fall,Dr. Lee,98,Female,Ohio
+S008,Mason Taylor,10,Science,84,Fall,Dr. Lee,90,Male,Georgia
+S009,Isabella Moore,10,Science,87,Fall,Dr. Lee,94,Female,North Carolina
+S010,William Jackson,10,Science,79,Fall,Dr. Lee,87,Male,Michigan
+S001,Emma Johnson,10,English,91,Fall,Ms. Davis,95,Female,California
+S002,Liam Brown,10,English,75,Fall,Ms. Davis,88,Male,Texas
+S003,Olivia Davis,10,English,94,Fall,Ms. Davis,97,Female,New York
+S004,Noah Wilson,10,English,69,Fall,Ms. Davis,82,Male,Florida
+S005,Ava Martinez,10,English,87,Fall,Ms. Davis,93,Female,Illinois
+S006,Elijah Anderson,10,English,72,Fall,Ms. Davis,85,Male,Pennsylvania
+S007,Sophia Thomas,10,English,96,Fall,Ms. Davis,98,Female,Ohio
+S008,Mason Taylor,10,English,80,Fall,Ms. Davis,90,Male,Georgia
+S009,Isabella Moore,10,English,92,Fall,Ms. Davis,94,Female,North Carolina
+S010,William Jackson,10,English,74,Fall,Ms. Davis,87,Male,Michigan
+S001,Emma Johnson,10,History,83,Fall,Mr. Johnson,95,Female,California
+S002,Liam Brown,10,History,80,Fall,Mr. Johnson,88,Male,Texas
+S003,Olivia Davis,10,History,89,Fall,Mr. Johnson,97,Female,New York
+S004,Noah Wilson,10,History,65,Fall,Mr. Johnson,82,Male,Florida
+S005,Ava Martinez,10,History,85,Fall,Mr. Johnson,93,Female,Illinois
+S006,Elijah Anderson,10,History,76,Fall,Mr. Johnson,85,Male,Pennsylvania
+S007,Sophia Thomas,10,History,91,Fall,Mr. Johnson,98,Female,Ohio
+S008,Mason Taylor,10,History,82,Fall,Mr. Johnson,90,Male,Georgia
+S009,Isabella Moore,10,History,88,Fall,Mr. Johnson,94,Female,North Carolina
+S010,William Jackson,10,History,78,Fall,Mr. Johnson,87,Male,Michigan
+S011,James White,11,Mathematics,90,Fall,Mr. Smith,92,Male,Virginia
+S012,Charlotte Harris,11,Mathematics,87,Fall,Mr. Smith,96,Female,Washington
+S013,Benjamin Clark,11,Mathematics,79,Fall,Mr. Smith,89,Male,Arizona
+S014,Amelia Lewis,11,Mathematics,94,Fall,Mr. Smith,97,Female,Massachusetts
+S015,Lucas Robinson,11,Mathematics,72,Fall,Mr. Smith,84,Male,Tennessee
+S016,Mia Walker,11,Mathematics,88,Fall,Mr. Smith,93,Female,Missouri
+S017,Henry Hall,11,Mathematics,81,Fall,Mr. Smith,88,Male,Maryland
+S018,Evelyn Allen,11,Mathematics,93,Fall,Mr. Smith,95,Female,Wisconsin
+S019,Alexander Young,11,Mathematics,75,Fall,Mr. Smith,86,Male,Minnesota
+S020,Harper King,11,Mathematics,86,Fall,Mr. Smith,91,Female,Colorado
+S011,James White,11,Science,92,Fall,Dr. Lee,92,Male,Virginia
+S012,Charlotte Harris,11,Science,85,Fall,Dr. Lee,96,Female,Washington
+S013,Benjamin Clark,11,Science,80,Fall,Dr. Lee,89,Male,Arizona
+S014,Amelia Lewis,11,Science,95,Fall,Dr. Lee,97,Female,Massachusetts
+S015,Lucas Robinson,11,Science,74,Fall,Dr. Lee,84,Male,Tennessee
+S016,Mia Walker,11,Science,89,Fall,Dr. Lee,93,Female,Missouri
+S017,Henry Hall,11,Science,83,Fall,Dr. Lee,88,Male,Maryland
+S018,Evelyn Allen,11,Science,94,Fall,Dr. Lee,95,Female,Wisconsin
+S019,Alexander Young,11,Science,77,Fall,Dr. Lee,86,Male,Minnesota
+S020,Harper King,11,Science,88,Fall,Dr. Lee,91,Female,Colorado
+S011,James White,11,English,89,Fall,Ms. Davis,92,Male,Virginia
+S012,Charlotte Harris,11,English,90,Fall,Ms. Davis,96,Female,Washington
+S013,Benjamin Clark,11,English,76,Fall,Ms. Davis,89,Male,Arizona
+S014,Amelia Lewis,11,English,93,Fall,Ms. Davis,97,Female,Massachusetts
+S015,Lucas Robinson,11,English,70,Fall,Ms. Davis,84,Male,Tennessee
+S016,Mia Walker,11,English,87,Fall,Ms. Davis,93,Female,Missouri
+S017,Henry Hall,11,English,79,Fall,Ms. Davis,88,Male,Maryland
+S018,Evelyn Allen,11,English,92,Fall,Ms. Davis,95,Female,Wisconsin
+S019,Alexander Young,11,English,73,Fall,Ms. Davis,86,Male,Minnesota
+S020,Harper King,11,English,85,Fall,Ms. Davis,91,Female,Colorado
+S011,James White,11,History,87,Fall,Mr. Johnson,92,Male,Virginia
+S012,Charlotte Harris,11,History,86,Fall,Mr. Johnson,96,Female,Washington
+S013,Benjamin Clark,11,History,78,Fall,Mr. Johnson,89,Male,Arizona
+S014,Amelia Lewis,11,History,91,Fall,Mr. Johnson,97,Female,Massachusetts
+S015,Lucas Robinson,11,History,71,Fall,Mr. Johnson,84,Male,Tennessee
+S016,Mia Walker,11,History,84,Fall,Mr. Johnson,93,Female,Missouri
+S017,Henry Hall,11,History,80,Fall,Mr. Johnson,88,Male,Maryland
+S018,Evelyn Allen,11,History,90,Fall,Mr. Johnson,95,Female,Wisconsin
+S019,Alexander Young,11,History,74,Fall,Mr. Johnson,86,Male,Minnesota
+S020,Harper King,11,History,83,Fall,Mr. Johnson,91,Female,Colorado
+S021,Daniel Scott,12,Mathematics,88,Fall,Mr. Smith,94,Male,Alabama
+S022,Emily Green,12,Mathematics,91,Fall,Mr. Smith,98,Female,South Carolina
+S023,Matthew Adams,12,Mathematics,77,Fall,Mr. Smith,87,Male,Louisiana
+S024,Abigail Baker,12,Mathematics,96,Fall,Mr. Smith,99,Female,Kentucky
+S025,Joseph Nelson,12,Mathematics,73,Fall,Mr. Smith,85,Male,Oregon
+S026,Elizabeth Carter,12,Mathematics,89,Fall,Mr. Smith,95,Female,Oklahoma
+S027,David Mitchell,12,Mathematics,82,Fall,Mr. Smith,90,Male,Connecticut
+S028,Sofia Perez,12,Mathematics,94,Fall,Mr. Smith,97,Female,Iowa
+S029,Samuel Roberts,12,Mathematics,76,Fall,Mr. Smith,88,Male,Mississippi
+S030,Avery Turner,12,Mathematics,87,Fall,Mr. Smith,92,Female,Arkansas
+S021,Daniel Scott,12,Science,90,Fall,Dr. Lee,94,Male,Alabama
+S022,Emily Green,12,Science,92,Fall,Dr. Lee,98,Female,South Carolina
+S023,Matthew Adams,12,Science,79,Fall,Dr. Lee,87,Male,Louisiana
+S024,Abigail Baker,12,Science,97,Fall,Dr. Lee,99,Female,Kentucky
+S025,Joseph Nelson,12,Science,75,Fall,Dr. Lee,85,Male,Oregon
+S026,Elizabeth Carter,12,Science,91,Fall,Dr. Lee,95,Female,Oklahoma
+S027,David Mitchell,12,Science,84,Fall,Dr. Lee,90,Male,Connecticut
+S028,Sofia Perez,12,Science,95,Fall,Dr. Lee,97,Female,Iowa
+S029,Samuel Roberts,12,Science,78,Fall,Dr. Lee,88,Male,Mississippi
+S030,Avery Turner,12,Science,89,Fall,Dr. Lee,92,Female,Arkansas

@@ -1,0 +1,101 @@
+ProductID,ProductName,Category,Supplier,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued,LastRestockDate,WarehouseLocation
+P001,Laptop Pro 15,Electronics,TechSupply Inc,1299.99,45,20,10,No,2024-10-15,New York
+P002,Wireless Mouse,Electronics,TechSupply Inc,29.99,150,0,30,No,2024-10-20,New York
+P003,USB-C Cable,Electronics,TechSupply Inc,12.99,200,50,40,No,2024-10-18,California
+P004,Office Chair Deluxe,Furniture,ComfortSeats Ltd,249.99,30,10,8,No,2024-10-10,Texas
+P005,Standing Desk,Furniture,ComfortSeats Ltd,449.99,15,5,5,No,2024-10-12,Texas
+P006,LED Monitor 27",Electronics,TechSupply Inc,329.99,60,15,12,No,2024-10-22,New York
+P007,Mechanical Keyboard,Electronics,TechSupply Inc,89.99,80,0,20,No,2024-10-19,California
+P008,Desk Lamp,Furniture,BrightLight Co,34.99,100,0,25,No,2024-10-16,Florida
+P009,Ergonomic Mouse Pad,Office Supplies,OfficeEssentials,19.99,120,30,30,No,2024-10-21,Illinois
+P010,Notebook Set,Office Supplies,OfficeEssentials,15.99,250,50,60,No,2024-10-17,Illinois
+P011,Pen Box (24 pack),Office Supplies,OfficeEssentials,8.99,300,0,80,No,2024-10-14,Illinois
+P012,File Cabinet,Furniture,ComfortSeats Ltd,189.99,20,8,6,No,2024-10-11,Texas
+P013,Webcam HD,Electronics,TechSupply Inc,79.99,55,10,15,No,2024-10-23,New York
+P014,Headphones Wireless,Electronics,TechSupply Inc,149.99,70,20,18,No,2024-10-20,California
+P015,Desk Organizer,Office Supplies,OfficeEssentials,24.99,140,0,35,No,2024-10-15,Illinois
+P016,Printer Paper (500 sheets),Office Supplies,PaperWorld,9.99,400,100,100,No,2024-10-13,Georgia
+P017,Laser Printer,Electronics,TechSupply Inc,399.99,25,5,8,No,2024-10-09,New York
+P018,Bookshelf 5-Tier,Furniture,ComfortSeats Ltd,129.99,18,7,5,No,2024-10-08,Texas
+P019,Whiteboard Large,Office Supplies,OfficeEssentials,89.99,35,10,10,No,2024-10-19,Florida
+P020,Marker Set (12 colors),Office Supplies,OfficeEssentials,12.99,180,40,45,No,2024-10-16,Illinois
+P021,Conference Table,Furniture,ComfortSeats Ltd,799.99,8,3,3,No,2024-10-07,Texas
+P022,Executive Chair,Furniture,ComfortSeats Ltd,549.99,12,4,4,No,2024-10-10,Texas
+P023,Tablet 10",Electronics,TechSupply Inc,429.99,40,12,10,No,2024-10-21,California
+P024,Smartphone Stand,Electronics,TechSupply Inc,19.99,160,0,40,No,2024-10-18,New York
+P025,Cable Management Kit,Electronics,TechSupply Inc,24.99,90,20,25,No,2024-10-22,California
+P026,Stapler Heavy Duty,Office Supplies,OfficeEssentials,16.99,110,0,30,No,2024-10-14,Illinois
+P027,Scissors Set,Office Supplies,OfficeEssentials,11.99,95,25,30,No,2024-10-17,Florida
+P028,Tape Dispenser,Office Supplies,OfficeEssentials,7.99,200,50,50,No,2024-10-15,Illinois
+P029,Calculator Scientific,Electronics,TechSupply Inc,34.99,65,15,18,No,2024-10-20,New York
+P030,Desk Mat XL,Office Supplies,OfficeEssentials,29.99,75,0,20,No,2024-10-19,Florida
+P031,Monitor Arm,Furniture,ComfortSeats Ltd,149.99,22,6,8,No,2024-10-12,Texas
+P032,Laptop Stand,Furniture,ComfortSeats Ltd,49.99,85,15,22,No,2024-10-16,California
+P033,Document Scanner,Electronics,TechSupply Inc,279.99,18,8,6,No,2024-10-11,New York
+P034,Shredder,Office Supplies,OfficeEssentials,119.99,28,5,8,No,2024-10-13,Illinois
+P035,Desk Clock Digital,Office Supplies,OfficeEssentials,22.99,105,0,28,No,2024-10-18,Florida
+P036,Phone Holder,Office Supplies,OfficeEssentials,14.99,130,30,35,No,2024-10-17,Illinois
+P037,Binder Set (6 pack),Office Supplies,PaperWorld,18.99,170,40,45,No,2024-10-14,Georgia
+P038,Highlighter Pack,Office Supplies,OfficeEssentials,9.99,220,0,55,No,2024-10-16,Illinois
+P039,Sticky Notes Bundle,Office Supplies,OfficeEssentials,13.99,190,45,50,No,2024-10-15,Florida
+P040,USB Hub 7-Port,Electronics,TechSupply Inc,39.99,72,18,20,No,2024-10-21,California
+P041,External Hard Drive 2TB,Electronics,TechSupply Inc,89.99,50,12,15,No,2024-10-22,New York
+P042,Mouse Pad RGB,Electronics,TechSupply Inc,44.99,68,0,18,No,2024-10-20,California
+P043,Desk Fan,Office Supplies,OfficeEssentials,32.99,58,12,16,No,2024-10-18,Florida
+P044,Paper Clip Box,Office Supplies,PaperWorld,4.99,350,0,90,No,2024-10-13,Georgia
+P045,Rubber Band Bundle,Office Supplies,PaperWorld,5.99,280,70,75,No,2024-10-14,Georgia
+P046,Envelope Pack (100),Office Supplies,PaperWorld,12.99,160,35,40,No,2024-10-15,Georgia
+P047,Label Maker,Electronics,TechSupply Inc,54.99,42,10,12,No,2024-10-19,New York
+P048,Hole Punch 3-Hole,Office Supplies,OfficeEssentials,13.99,88,0,24,No,2024-10-17,Illinois
+P049,Clipboard Set (3),Office Supplies,OfficeEssentials,16.99,102,25,28,No,2024-10-16,Florida
+P050,Desk Drawer Unit,Furniture,ComfortSeats Ltd,179.99,14,6,5,No,2024-10-09,Texas
+P051,Footrest,Furniture,ComfortSeats Ltd,39.99,48,12,14,No,2024-10-15,Texas
+P052,Keyboard Tray,Furniture,ComfortSeats Ltd,69.99,32,8,10,No,2024-10-12,California
+P053,Task Light LED,Furniture,BrightLight Co,44.99,64,15,18,No,2024-10-18,Florida
+P054,Charging Station,Electronics,TechSupply Inc,49.99,56,14,16,No,2024-10-21,New York
+P055,Bluetooth Speaker,Electronics,TechSupply Inc,79.99,44,10,12,No,2024-10-22,California
+P056,Desk Calendar 2024,Office Supplies,OfficeEssentials,11.99,92,0,25,No,2024-10-14,Illinois
+P057,Wall Clock,Office Supplies,OfficeEssentials,24.99,76,18,20,No,2024-10-17,Florida
+P058,Trash Can,Office Supplies,OfficeEssentials,18.99,84,0,22,No,2024-10-16,Illinois
+P059,Coat Rack,Furniture,ComfortSeats Ltd,59.99,26,7,8,No,2024-10-11,Texas
+P060,Storage Box Set,Office Supplies,OfficeEssentials,34.99,66,16,18,No,2024-10-18,Florida
+P061,Letter Tray 3-Tier,Office Supplies,OfficeEssentials,22.99,98,0,26,No,2024-10-15,Illinois
+P062,Name Plate Desk,Office Supplies,OfficeEssentials,14.99,112,28,30,No,2024-10-17,Illinois
+P063,Business Card Holder,Office Supplies,OfficeEssentials,9.99,145,0,38,No,2024-10-16,Florida
+P064,Magazine Rack,Furniture,ComfortSeats Ltd,44.99,38,9,11,No,2024-10-13,Texas
+P065,Tissue Box Holder,Office Supplies,OfficeEssentials,12.99,118,30,32,No,2024-10-17,Illinois
+P066,Coffee Mug Warmer,Electronics,TechSupply Inc,24.99,82,20,22,No,2024-10-20,New York
+P067,Mini Fridge,Electronics,TechSupply Inc,149.99,16,6,6,No,2024-10-10,California
+P068,Water Dispenser,Office Supplies,OfficeEssentials,89.99,24,8,8,No,2024-10-12,Florida
+P069,Air Purifier,Electronics,TechSupply Inc,129.99,28,9,10,No,2024-10-19,New York
+P070,Humidifier,Office Supplies,OfficeEssentials,54.99,36,12,12,No,2024-10-18,Florida
+P071,Presentation Pointer,Electronics,TechSupply Inc,29.99,74,18,20,No,2024-10-21,California
+P072,Projector Screen,Electronics,TechSupply Inc,199.99,12,5,5,No,2024-10-08,New York
+P073,Flip Chart Stand,Office Supplies,OfficeEssentials,79.99,19,7,7,No,2024-10-14,Illinois
+P074,Index Cards (500),Office Supplies,PaperWorld,8.99,210,50,55,No,2024-10-13,Georgia
+P075,Post-It Flags,Office Supplies,OfficeEssentials,6.99,240,60,65,No,2024-10-15,Illinois
+P076,Correction Tape,Office Supplies,OfficeEssentials,4.99,195,48,52,No,2024-10-16,Florida
+P077,Stamp Pad,Office Supplies,OfficeEssentials,7.99,156,0,42,No,2024-10-17,Illinois
+P078,Badge Holder (10),Office Supplies,OfficeEssentials,11.99,134,32,36,No,2024-10-18,Illinois
+P079,Lanyard (10),Office Supplies,OfficeEssentials,9.99,168,40,44,No,2024-10-16,Florida
+P080,Safety Scissors,Office Supplies,OfficeEssentials,8.99,122,30,33,No,2024-10-17,Illinois
+P081,Glue Stick Pack,Office Supplies,OfficeEssentials,6.99,186,0,48,No,2024-10-15,Illinois
+P082,Push Pins Box,Office Supplies,PaperWorld,5.99,224,56,60,No,2024-10-14,Georgia
+P083,Thumb Tacks Box,Office Supplies,PaperWorld,5.99,216,54,58,No,2024-10-13,Georgia
+P084,Ruler Set,Office Supplies,OfficeEssentials,7.99,142,35,38,No,2024-10-16,Florida
+P085,Protractor,Office Supplies,OfficeEssentials,3.99,178,0,46,No,2024-10-17,Illinois
+P086,Compass,Office Supplies,OfficeEssentials,4.99,165,40,44,No,2024-10-18,Illinois
+P087,Eraser Pack (12),Office Supplies,OfficeEssentials,5.99,198,48,52,No,2024-10-15,Florida
+P088,Pencil Sharpener,Office Supplies,OfficeEssentials,8.99,152,38,40,No,2024-10-16,Illinois
+P089,Pencil Case,Office Supplies,OfficeEssentials,12.99,126,32,34,No,2024-10-17,Illinois
+P090,Graph Paper Pad,Office Supplies,PaperWorld,9.99,138,34,37,No,2024-10-14,Georgia
+P091,Legal Pad Yellow,Office Supplies,PaperWorld,7.99,205,50,54,No,2024-10-13,Georgia
+P092,Folder Set (12),Office Supplies,PaperWorld,14.99,174,42,46,No,2024-10-15,Georgia
+P093,Expanding File,Office Supplies,PaperWorld,16.99,96,24,26,No,2024-10-16,Georgia
+P094,Report Cover (25),Office Supplies,PaperWorld,19.99,108,27,29,No,2024-10-14,Georgia
+P095,Sheet Protectors (100),Office Supplies,PaperWorld,11.99,156,38,42,No,2024-10-15,Georgia
+P096,Divider Set,Office Supplies,PaperWorld,8.99,144,36,38,No,2024-10-16,Georgia
+P097,Tab Labels,Office Supplies,OfficeEssentials,6.99,188,46,50,No,2024-10-17,Illinois
+P098,Stamp Date,Office Supplies,OfficeEssentials,13.99,86,22,24,No,2024-10-18,Illinois
+P099,Receipt Book,Office Supplies,PaperWorld,9.99,114,28,31,No,2024-10-14,Georgia
+P100,Invoice Book,Office Supplies,PaperWorld,10.99,102,26,28,No,2024-10-15,Georgia
