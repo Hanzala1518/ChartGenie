@@ -1,22 +1,28 @@
-# 🌊 ChartGenie - AI-Powered CSV Data Visualization Platform# ChartGenie 🧞‍♂️
+# ChartGenie 🧞‍♂️
 
-
-
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)Transform CSV files into beautiful, interactive visualizations with AI-powered insights.
-
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
-
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat&logo=react&logoColor=white)![ChartGenie Banner](https://via.placeholder.com/1200x400/667eea/ffffff?text=ChartGenie+-+AI-Powered+Data+Visualization)
-
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat&logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5.0.8-646CFF?style=flat&logo=vite&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-Powered-F55036?style=flat&logo=lightning&logoColor=white)
 
-## ✨ Features
+**Transform CSV files into beautiful, interactive visualizations with AI-powered insights.**
 
-**Transform your CSV files into beautiful, interactive visualizations with the power of AI**
+![ChartGenie Banner](https://via.placeholder.com/1200x400/667eea/ffffff?text=ChartGenie+-+AI-Powered+Data+Visualization)
 
-- 📊 **Smart Data Analysis** - Automatically detects column types (numbers, dates, geo-data, categories)
+## 🌟 Why ChartGenie?
 
-ChartGenie is a modern, full-stack data visualization platform that combines the simplicity of CSV uploads with the intelligence of Groq's Moonshot AI. Upload your data, ask questions in natural language, and get instant insights with stunning charts.- 🎨 **Beautiful Charts** - Bar, Line, Scatter, Tree Map, Geo Map, Heat Map, and Gantt charts
+ChartGenie is a modern, full-stack data visualization platform powered by **Moonshot AI's Kimi model** via Groq's ultra-fast inference engine. 
+
+### 🆓 100% Open Source AI - No Vendor Lock-in
+
+- ✅ **No OpenAI dependency** - Uses Moonshot's open Kimi K2 model
+- ✅ **No Gemini dependency** - Completely independent from Google
+- ✅ **Ultra-fast inference** - Groq's LPU technology delivers responses in milliseconds
+- ✅ **Cost-effective** - Open source model with generous free tier
+- ✅ **Privacy-focused** - Your data processed by open models, not proprietary APIs
+
+Upload your data, ask questions in natural language, and get instant insights with stunning charts—all powered by cutting-edge open source AI.- 🎨 **Beautiful Charts** - Bar, Line, Scatter, Tree Map, Geo Map, Heat Map, and Gantt charts
 
 - 🤖 **AI Chat Interface** - Ask questions in natural language to create custom visualizations
 
@@ -412,17 +418,28 @@ VITE_GROQ_API_KEY=your_groq_api_key_here
 
 
 
-### 5. Run the Development Server## 🙏 Acknowledgments
+### 5. Run the Development Server
 
+```bash
+npm run dev
+```
 
+The app will open at `http://localhost:5173`
 
-```bash- [Supabase](https://supabase.com) - Amazing backend platform
+## 🙏 Acknowledgments
 
-npm run dev- [Apache ECharts](https://echarts.apache.org) - Powerful charting library
+### Open Source AI - No Vendor Lock-in
 
-```- [Groq](https://groq.com/) - Ultra-fast AI inference with Moonshot Kimi K2
+- **[Moonshot AI](https://www.moonshot.cn/)** - Kimi K2 Instruct open source model (NO OpenAI or Gemini needed!)
+- **[Groq](https://groq.com/)** - Ultra-fast LPU inference engine for Moonshot Kimi
 
-- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
+### Infrastructure & Tools
+
+- **[Supabase](https://supabase.com)** - Amazing open-source backend platform
+- **[Apache ECharts](https://echarts.apache.org)** - Powerful charting library
+- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first CSS framework
+
+**ChartGenie is built entirely on open-source AI models - free from proprietary API dependencies like OpenAI GPT or Google Gemini!**
 
 The app will open at `http://localhost:5173`
 
@@ -662,7 +679,15 @@ This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- **Groq & Moonshot AI** - Ultra-fast AI-powered data analysis
+### 🌟 Open Source AI - No Proprietary Dependencies
+
+- **[Moonshot AI](https://www.moonshot.cn/)** - Kimi K2 Instruct model (Open source alternative to GPT/Gemini)
+- **[Groq](https://groq.com/)** - Lightning-fast LPU inference (10x faster than traditional GPUs)
+
+**Why This Matters:** ChartGenie uses fully open-source AI models. You're not locked into expensive APIs like OpenAI or Google Gemini. Switch models anytime without vendor lock-in!
+
+### 🛠️ Infrastructure & Tools
+
 - **Supabase** - Backend infrastructure
 - **Apache ECharts** - Beautiful visualizations
 - **shadcn/ui** - Accessible components
@@ -675,6 +700,7 @@ This project is licensed under the MIT License.
 Future enhancements:
 
 - [ ] Multi-turn conversations (chat memory)
+- [ ] Support for more open-source models (LLaMA, Mistral, etc.)
 - [ ] Export insights to PDF/Word
 - [ ] Custom chart themes and branding
 - [ ] Real-time collaboration
@@ -683,12 +709,15 @@ Future enhancements:
 - [ ] Data transformation tools
 - [ ] Integration with Google Sheets, Excel
 - [ ] Mobile app (React Native)
+- [ ] Self-hosted AI option (run models locally)
 
 ---
 
 <div align="center">
 
-**Made with ❤️ using React, Supabase & Groq AI**
+**Made with ❤️ using React, Supabase & Open Source AI (Moonshot Kimi via Groq)**
+
+🆓 **No OpenAI. No Gemini. No Vendor Lock-in.**
 
 ⭐ Star us on GitHub | 🐛 Report Bug | 💡 Request Feature
 
