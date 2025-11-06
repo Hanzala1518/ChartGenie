@@ -18,8 +18,14 @@ export function DatasetDetail() {
 
   if (datasetLoading) {
     return (
-      <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-8">
+      <div className="min-h-screen animated-gradient relative overflow-hidden">
+        {/* Decorative elements - Coral Reef theme */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-coral-teal/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-coral-pink/20 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-4 py-8 relative z-10">
           <Skeleton className="h-10 w-48 mb-8" />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
@@ -37,9 +43,15 @@ export function DatasetDetail() {
 
   if (!dataset) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Dataset not found</h2>
+      <div className="min-h-screen animated-gradient relative overflow-hidden flex items-center justify-center">
+        {/* Decorative elements - Coral Reef theme */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-coral-teal/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-coral-pink/20 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="text-center relative z-10">
+          <h2 className="text-2xl font-bold mb-4 text-white drop-shadow-lg">Dataset not found</h2>
           <Button onClick={() => navigate('/dashboard')}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Dashboard
@@ -50,9 +62,15 @@ export function DatasetDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen animated-gradient relative overflow-hidden">
+      {/* Decorative elements - Coral Reef theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-coral-teal/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-coral-pink/20 rounded-full blur-3xl" />
+      </div>
+
       {/* Navigation */}
-      <nav className="glass border-b border-white/10 sticky top-0 z-40 backdrop-blur-xl">
+      <nav className="glass border-b border-white/10 sticky top-0 z-40 backdrop-blur-xl relative">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -81,7 +99,7 @@ export function DatasetDetail() {
       </nav>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Charts Section */}
           <motion.div

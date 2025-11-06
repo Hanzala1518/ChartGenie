@@ -21,9 +21,15 @@ export function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen animated-gradient relative overflow-hidden">
+      {/* Decorative elements - Coral Reef theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-coral-teal/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-coral-pink/20 rounded-full blur-3xl" />
+      </div>
+
       {/* Navigation */}
-      <nav className="glass border-b border-white/10 sticky top-0 z-40 backdrop-blur-xl">
+      <nav className="glass border-b border-white/10 sticky top-0 z-40 backdrop-blur-xl relative">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -52,7 +58,7 @@ export function Dashboard() {
       </nav>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

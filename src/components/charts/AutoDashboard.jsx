@@ -176,7 +176,7 @@ export function AutoDashboard({ dataset, data, loading }) {
                 chartType: chart.chartType,
                 config: chart.config
               }}
-              chartData={data}
+              chartData={chart.aggregatedData || data}
             />
             {chart.insight && (
               <div className="glass-card p-4 border-l-4 border-primary">

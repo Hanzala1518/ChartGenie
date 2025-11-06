@@ -121,7 +121,12 @@ export function getBarChartConfig(data, config) {
  * Get ECharts configuration for line charts
  */
 export function getLineChartConfig(data, config) {
-  const clean = cleanData(data, [config.x, config.y]) // NEW
+  // For line charts, only validate y-axis is numeric, x-axis can be category/date
+  const clean = data.filter(row => 
+    row[config.x] != null && 
+    row[config.y] != null && 
+    !isNaN(Number(row[config.y]))
+  )
   const xData = clean.map(d => d[config.x])
   const yData = clean.map(d => Number(d[config.y]))
 

@@ -102,12 +102,16 @@ You MUST return valid JSON in ONE of these formats:
 
 - **bar**: Comparing categories, rankings, group comparisons
   Example: "show sales by region", "compare departments"
+  Config: { category: "CategoryColumn", value: "NumericColumn" }
 
-- **line**: Time series, trends, changes over periods
-  Example: "revenue over months", "growth trend"
+- **line**: Time series, trends, sequential data (can use dates OR categories)
+  Example: "revenue over months", "growth trend", "show line chart"
+  Config: { x: "DateOrCategoryColumn", y: "NumericColumn" }
+  Note: Works with dates, categories, or sequential numeric data
 
 - **scatter**: Correlations, relationships between 2 numeric variables
   Example: "price vs quantity", "age vs income relationship"
+  Config: { x: "NumericColumn1", y: "NumericColumn2" }
 
 - **treemap**: Hierarchical data, proportions, part-to-whole
   Example: "market share breakdown", "budget allocation"
@@ -290,6 +294,73 @@ function generateResponseFallback(prompt: string, columnSchema: any, sampleData:
   
   console.log('📊 User wants VISUALIZATION')
   
+  // Detect EXPLICIT chart type requests first (user says "line chart", "bar chart", etc.)
+  const explicitLineChart = lowerPrompt.match(/\b(line\s+chart|line\s+graph|line\s+plot)\b/)
+  const explicitBarChart = lowerPrompt.match(/\b(bar\s+chart|bar\s+graph|column\s+chart)\b/)
+  const explicitScatterChart = lowerPrompt.match(/\b(scatter\s+chart|scatter\s+plot|scatter\s+graph)\b/)
+  const explicitTreemap = lowerPrompt.match(/\b(treemap|tree\s+map)\b/)
+  
+  // Handle EXPLICIT requests with priority
+  if (explicitLineChart) {
+    console.log('✅ EXPLICIT LINE chart request detected')
+    if (dateCols.length > 0 && numberCols.length > 0) {
+      return {
+        type: 'viz',
+        chartType: 'line',
+        config: { x: dateCols[0], y: numberCols[0] }
+      }
+    } else if (categoryCols.length > 0 && numberCols.length > 0) {
+      // Use category as x-axis if no date column
+      console.log('⚠️ No date column, using category for line chart')
+      return {
+        type: 'viz',
+        chartType: 'line',
+        config: { x: categoryCols[0], y: numberCols[0] }
+      }
+    } else if (numberCols.length >= 2) {
+      // Use first number column as x-axis
+      console.log('⚠️ No date/category, using number columns for line chart')
+      return {
+        type: 'viz',
+        chartType: 'line',
+        config: { x: numberCols[0], y: numberCols[1] }
+      }
+    }
+  }
+  
+  if (explicitBarChart) {
+    console.log('✅ EXPLICIT BAR chart request detected')
+    if (categoryCols.length > 0 && numberCols.length > 0) {
+      return {
+        type: 'viz',
+        chartType: 'bar',
+        config: { category: categoryCols[0], value: numberCols[0] }
+      }
+    }
+  }
+  
+  if (explicitScatterChart) {
+    console.log('✅ EXPLICIT SCATTER chart request detected')
+    if (numberCols.length >= 2) {
+      return {
+        type: 'viz',
+        chartType: 'scatter',
+        config: { x: numberCols[0], y: numberCols[1] }
+      }
+    }
+  }
+  
+  if (explicitTreemap) {
+    console.log('✅ EXPLICIT TREEMAP request detected')
+    if (categoryCols.length > 0 && numberCols.length > 0) {
+      return {
+        type: 'viz',
+        chartType: 'treemap',
+        config: { category: categoryCols[0], value: numberCols[0] }
+      }
+    }
+  }
+  
   // Detect chart type from keywords (order matters - check most specific first)
   let chartType = 'bar' // default
   
@@ -350,10 +421,19 @@ function parseGroqResponse(responseText: string): any {
   // Try direct JSON parse
   try {
     const parsed = JSON.parse(responseText)
-    if (parsed.type && (parsed.answer || (parsed.chartType && parsed.config))) {
+    // Check for valid response format
+    if (parsed.type === 'text' && parsed.answer) {
+      console.log('✅ Parsed TEXT response')
       return parsed
     }
-  } catch (e) {}
+    if (parsed.type === 'viz' && parsed.chartType && parsed.config) {
+      console.log('✅ Parsed VIZ response:', parsed.chartType)
+      return parsed
+    }
+    console.warn('⚠️ JSON parsed but invalid format:', parsed)
+  } catch (e) {
+    console.log('❌ Direct JSON parse failed:', e.message)
+  }
   
   // Remove markdown code blocks
   let cleaned = responseText
@@ -363,19 +443,38 @@ function parseGroqResponse(responseText: string): any {
   
   try {
     const parsed = JSON.parse(cleaned)
-    if (parsed.type && (parsed.answer || (parsed.chartType && parsed.config))) {
+    if (parsed.type === 'text' && parsed.answer) {
+      console.log('✅ Parsed TEXT response (after cleaning)')
       return parsed
     }
-  } catch (e) {}
+    if (parsed.type === 'viz' && parsed.chartType && parsed.config) {
+      console.log('✅ Parsed VIZ response (after cleaning):', parsed.chartType)
+      return parsed
+    }
+    console.warn('⚠️ Cleaned JSON parsed but invalid format:', parsed)
+  } catch (e) {
+    console.log('❌ Cleaned JSON parse failed:', e.message)
+  }
   
   // Extract JSON with regex
   const match = cleaned.match(/\{[\s\S]*"type"[\s\S]*\}/)
   if (match) {
     try {
-      return JSON.parse(match[0])
-    } catch (e) {}
+      const parsed = JSON.parse(match[0])
+      if (parsed.type === 'text' && parsed.answer) {
+        console.log('✅ Parsed TEXT response (from regex)')
+        return parsed
+      }
+      if (parsed.type === 'viz' && parsed.chartType && parsed.config) {
+        console.log('✅ Parsed VIZ response (from regex):', parsed.chartType)
+        return parsed
+      }
+    } catch (e) {
+      console.log('❌ Regex extracted JSON parse failed:', e.message)
+    }
   }
   
+  console.error('❌ Could not parse Groq response - all methods failed')
   throw new Error('Could not parse Groq response')
 }
 
