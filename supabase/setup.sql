@@ -177,13 +177,14 @@ CREATE TRIGGER on_dataset_deleted
 --    npx supabase functions deploy analyze-dataset
 --    npx supabase functions deploy rag-query
 --
--- 2. Set Gemini API secret:
---    npx supabase secrets set GEMINI_API_KEY=your_key_here
+-- 2. Set Groq API secrets:
+--    npx supabase secrets set GROQ_API_KEY=your_key_here
+--    npx supabase secrets set GROQ_MODEL=moonshotai/kimi-k2-instruct-0905
 --
 -- 3. Configure your frontend .env file with:
 --    VITE_SUPABASE_URL=your_supabase_url
 --    VITE_SUPABASE_ANON_KEY=your_anon_key
---    VITE_GEMINI_API_KEY=your_gemini_key
+--    VITE_GROQ_API_KEY=your_groq_key
 --
 -- 4. Run the development server:
 --    npm run dev

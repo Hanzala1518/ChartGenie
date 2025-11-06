@@ -7,11 +7,11 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY')
-const GEMINI_MODEL = 'gemini-2.0-flash-exp' // Latest experimental model with enhanced capabilities
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`
+const GROQ_API_KEY = Deno.env.get('GROQ_API_KEY')
+const GROQ_MODEL = Deno.env.get('GROQ_MODEL') || 'moonshotai/kimi-k2-instruct-0905'
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
 
-const SYSTEM_PROMPT = `You are ChartGenie AI - an advanced data analysis assistant with capabilities matching ChatGPT, Claude, and Gemini. You excel at understanding natural language queries about datasets and providing insightful, accurate responses.
+const SYSTEM_PROMPT = `You are ChartGenie AI - an advanced data analysis assistant with capabilities matching ChatGPT, Claude, and other leading AI models. You excel at understanding natural language queries about datasets and providing insightful, accurate responses.
 
 🎯 YOUR CORE ABILITIES:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -342,15 +342,17 @@ function generateResponseFallback(prompt: string, columnSchema: any, sampleData:
 }
 
 /**
- * Parse Gemini response with fallback strategies
+ * Parse Groq/OpenAI-compatible response
  */
-function parseGeminiResponse(responseText: string): any {
+function parseGroqResponse(responseText: string): any {
   console.log('🔍 Parsing response:', responseText)
   
   // Try direct JSON parse
   try {
     const parsed = JSON.parse(responseText)
-    if (parsed.chartType && parsed.config) return parsed
+    if (parsed.type && (parsed.answer || (parsed.chartType && parsed.config))) {
+      return parsed
+    }
   } catch (e) {}
   
   // Remove markdown code blocks
@@ -361,67 +363,79 @@ function parseGeminiResponse(responseText: string): any {
   
   try {
     const parsed = JSON.parse(cleaned)
-    if (parsed.chartType && parsed.config) return parsed
+    if (parsed.type && (parsed.answer || (parsed.chartType && parsed.config))) {
+      return parsed
+    }
   } catch (e) {}
   
   // Extract JSON with regex
-  const match = cleaned.match(/\{[\s\S]*"chartType"[\s\S]*"config"[\s\S]*\}/)
+  const match = cleaned.match(/\{[\s\S]*"type"[\s\S]*\}/)
   if (match) {
     try {
       return JSON.parse(match[0])
     } catch (e) {}
   }
   
-  throw new Error('Could not parse Gemini response')
+  throw new Error('Could not parse Groq response')
 }
 
 /**
- * Call Google Gemini API
+ * Call Groq API (OpenAI-compatible)
  */
-async function callGemini(prompt: string): Promise<any> {
-  console.log('🤖 Calling Gemini API with model:', GEMINI_MODEL)
+async function callGroq(prompt: string): Promise<any> {
+  console.log('🤖 Calling Groq API with model:', GROQ_MODEL)
   console.log('📝 User prompt:', prompt)
   
-  const response = await fetch(GEMINI_API_URL, {
+  const response = await fetch(GROQ_API_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${GROQ_API_KEY}`
+    },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser question: "${prompt}"\n\nAnalyze the question carefully and return the appropriate chart type as JSON.` }] }],
-      generationConfig: {
-        temperature: 0.1,  // Very low for precise, accurate responses
-        maxOutputTokens: 1024,  // Increased for detailed answers
-        topP: 0.9,
-        candidateCount: 1,
-        stopSequences: ['}"]']
-      }
+      model: GROQ_MODEL,
+      messages: [
+        {
+          role: 'system',
+          content: SYSTEM_PROMPT
+        },
+        {
+          role: 'user',
+          content: prompt
+        }
+      ],
+      temperature: 0.6,
+      max_tokens: 4096,
+      top_p: 1,
+      stream: false
     }),
   })
 
   if (!response.ok) {
     const errorText = await response.text()
-    console.error('❌ Gemini API error:', response.status, errorText)
-    throw new Error(`Gemini API error: ${response.status} - ${errorText}`)
+    console.error('❌ Groq API error:', response.status, errorText)
+    throw new Error(`Groq API error: ${response.status} - ${errorText}`)
   }
 
   const data = await response.json()
-  console.log('📦 Raw Gemini response:', JSON.stringify(data, null, 2))
+  console.log('📦 Raw Groq response:', JSON.stringify(data, null, 2))
   
-  const text = data.candidates?.[0]?.content?.parts?.[0]?.text
+  const text = data.choices?.[0]?.message?.content
   
   if (!text) {
     console.error('❌ No text in response:', data)
-    throw new Error('Invalid Gemini response - no text content')
+    throw new Error('Invalid Groq response - no text content')
   }
   
-  console.log('📝 Gemini text:', text)
-  const parsed = parseGeminiResponse(text)
+  console.log('📝 Groq text:', text)
+  const parsed = parseGroqResponse(text)
   console.log('✅ Parsed response:', parsed)
   
   return parsed
 }
 
 /**
- * Generate insight about the visualization
+ * Generate insight about the visualization using Groq
  */
 async function generateInsight(chartSpec: any, data: any[]): Promise<string> {
   const insightPrompt = `Given this chart specification: ${JSON.stringify(chartSpec)}
@@ -429,59 +443,40 @@ And this data sample: ${JSON.stringify(data.slice(0, 5))}
 
 Generate a brief (1-2 sentences) insight about what this visualization shows. Focus on trends, patterns, or key findings.`
 
-  const response = await fetch(GEMINI_API_URL, {
+  const response = await fetch(GROQ_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${GROQ_API_KEY}`
     },
     body: JSON.stringify({
-      contents: [{
-        parts: [{
-          text: insightPrompt
-        }]
-      }],
-      generationConfig: {
-        temperature: 0.7,
-        maxOutputTokens: 500,
-        // We don't need to force JSON for the insight, but it's safer.
-        // responseMimeType: "text/plain" // (Default)
-      },
-      safetySettings: [
+      model: GROQ_MODEL,
+      messages: [
         {
-          category: "HARM_CATEGORY_HARASSMENT",
-          threshold: "BLOCK_NONE"
-        },
-        {
-          category: "HARM_CATEGORY_HATE_SPEECH",
-          threshold: "BLOCK_NONE"
-        },
-        {
-          category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-          threshold: "BLOCK_NONE"
-        },
-        {
-          category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-          threshold: "BLOCK_NONE"
+          role: 'user',
+          content: insightPrompt
         }
-      ]
+      ],
+      temperature: 0.7,
+      max_tokens: 500,
     }),
   })
 
   if (!response.ok) {
     const errorText = await response.text()
-    console.error('Gemini API error (insight):', errorText)
+    console.error('Groq API error (insight):', errorText)
     return 'Here is your visualization!'
   }
 
   const data_response = await response.json()
 
-  const candidate = data_response.candidates?.[0];
-  if (!candidate || !candidate.content || !candidate.content.parts || candidate.content.parts.length === 0) {
-    console.error('Unexpected Gemini response (insight):', JSON.stringify(data_response))
+  const message = data_response.choices?.[0]?.message?.content
+  if (!message) {
+    console.error('Unexpected Groq response (insight):', JSON.stringify(data_response))
     return 'Here is your visualization!'
   }
 
-  return candidate.content.parts[0].text
+  return message
 }
 
 /**
@@ -527,8 +522,8 @@ serve(async (req) => {
 
     console.log('Received request:', { datasetId, prompt })
 
-    if (!GEMINI_API_KEY) {
-      throw new Error('Gemini API key not configured')
+    if (!GROQ_API_KEY) {
+      throw new Error('Groq API key not configured')
     }
 
     // Initialize Supabase client
@@ -568,12 +563,12 @@ serve(async (req) => {
 
     const allData = parseResult.data
 
-    // 2. AUGMENT: Try to use Gemini, fallback to rule-based on error
+    // 2. AUGMENT: Try to use Groq, fallback to rule-based on error
     let response
     let usedFallback = false
     
     try {
-      console.log('🎯 Attempting Gemini API for prompt:', prompt)
+      console.log('🎯 Attempting Groq API for prompt:', prompt)
       
       // Prepare comprehensive data context
       const sampleRows = allData.slice(0, 10).map((row, idx) => {
@@ -690,8 +685,8 @@ Response:
 
 Now respond to the user's question with the appropriate JSON format (TEXT or VIZ).`
 
-      response = await callGemini(aiPrompt)
-      console.log('✅ Gemini SUCCESS - Response type:', response.type)
+      response = await callGroq(aiPrompt)
+      console.log('✅ Groq SUCCESS - Response type:', response.type)
       
       // Validate if it's a viz response
       if (response.type === 'viz') {
@@ -704,8 +699,8 @@ Now respond to the user's question with the appropriate JSON format (TEXT or VIZ
         }
       }
       
-    } catch (geminiError) {
-      console.error('⚠️ Gemini FAILED, using fallback. Error:', geminiError.message)
+    } catch (groqError) {
+      console.error('⚠️ Groq FAILED, using fallback. Error:', groqError.message)
       usedFallback = true
       response = generateResponseFallback(prompt, columnSchema, allData)
       console.log('📊 Fallback response - Type:', response.type)

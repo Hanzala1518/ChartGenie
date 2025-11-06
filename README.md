@@ -16,7 +16,7 @@
 
 - 📊 **Smart Data Analysis** - Automatically detects column types (numbers, dates, geo-data, categories)
 
-ChartGenie is a modern, full-stack data visualization platform that combines the simplicity of CSV uploads with the intelligence of Google's Gemini AI. Upload your data, ask questions in natural language, and get instant insights with stunning charts.- 🎨 **Beautiful Charts** - Bar, Line, Scatter, Tree Map, Geo Map, Heat Map, and Gantt charts
+ChartGenie is a modern, full-stack data visualization platform that combines the simplicity of CSV uploads with the intelligence of Groq's Moonshot AI. Upload your data, ask questions in natural language, and get instant insights with stunning charts.- 🎨 **Beautiful Charts** - Bar, Line, Scatter, Tree Map, Geo Map, Heat Map, and Gantt charts
 
 - 🤖 **AI Chat Interface** - Ask questions in natural language to create custom visualizations
 
@@ -58,9 +58,9 @@ ChartGenie is a modern, full-stack data visualization platform that combines the
 
   - Chat with your data using natural language  - Storage for CSV files
 
-  - Powered by **Gemini 2.0 Flash** (latest AI model)  - Edge Functions (Deno runtime)
+  - Powered by **Moonshot Kimi K2** (via Groq API)  - Edge Functions (Deno runtime)
 
-  - Ask ANY question: "What's the average?", "Show me trends", "Compare categories"- **Google Gemini Pro** - AI-powered visualization generation
+  - Ask ANY question: "What's the average?", "Show me trends", "Compare categories"- **Groq API** - Ultra-fast AI inference with Moonshot Kimi K2
 
   - Get intelligent text answers OR visualizations
 
@@ -76,7 +76,7 @@ ChartGenie is a modern, full-stack data visualization platform that combines the
 
   - Contextual and relevant to your data- Supabase account ([supabase.com](https://supabase.com))
 
-- Google Gemini API key ([aistudio.google.com](https://aistudio.google.com/app/apikey))
+- Groq API key ([console.groq.com/keys](https://console.groq.com/keys))
 
 - **📈 7 Chart Types**
 
@@ -164,11 +164,12 @@ The RAG (Retrieval-Augmented Generation) system can:
 
 "What's the average sales by region?"   
 
-"How many unique products are there?"   Set Gemini API key secret:
+"How many unique products are there?"   Set Groq API key secret:
 
 "Which category has the highest revenue?"   ```bash
 
-"Show me the top 5 performers"   supabase secrets set GEMINI_API_KEY=your_gemini_api_key
+"Show me the top 5 performers"   supabase secrets set GROQ_API_KEY=your_groq_api_key
+   supabase secrets set GROQ_MODEL=moonshotai/kimi-k2-instruct-0905
 
 "Compare Q1 vs Q2 sales"   ```
 
@@ -222,7 +223,7 @@ The RAG (Retrieval-Augmented Generation) system can:
 
   - Edge Functions (Deno)
 
-- **Google Gemini 2.0 Flash** - AI model for RAG### 3. Explore Auto-Generated Charts
+- **Groq API (Moonshot Kimi K2)** - Ultra-fast AI model for RAG### 3. Explore Auto-Generated Charts
 
 View automatically generated visualizations based on your data structure:
 
@@ -366,7 +367,10 @@ npx supabase functions deploy rag-query
 
 # Set secrets for Edge Functions2. Connect your repository to Vercel
 
-npx supabase secrets set GEMINI_API_KEY=your_gemini_api_key_here3. Add environment variables in Vercel dashboard
+# Set secrets for Edge Functions2. Connect your repository to Vercel
+npx supabase secrets set GROQ_API_KEY=your_groq_api_key_here
+npx supabase secrets set GROQ_MODEL=moonshotai/kimi-k2-instruct-0905
+3. Add environment variables in Vercel dashboard3. Add environment variables in Vercel dashboard
 
 ```4. Deploy!
 
@@ -390,9 +394,11 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here```
 
 
 
-# Google Gemini API Key## 🤝 Contributing
+# Groq API Key (Optional)## 🤝 Contributing
 
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
+# Groq API Key## 🤝 Contributing
+# Groq API Key## 🤝 Contributing
+VITE_GROQ_API_KEY=your_groq_api_key_here
 
 ```Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -402,7 +408,7 @@ VITE_GEMINI_API_KEY=your_gemini_api_key_here
 
 - **Supabase URL & Anon Key**: Project Settings → API
 
-- **Gemini API Key**: [Google AI Studio](https://makersuite.google.com/app/apikey)MIT License - feel free to use this project for personal or commercial purposes.
+- **Groq API Key**: [Groq Console](https://console.groq.com/keys)MIT License - feel free to use this project for personal or commercial purposes.
 
 
 
@@ -414,7 +420,7 @@ VITE_GEMINI_API_KEY=your_gemini_api_key_here
 
 npm run dev- [Apache ECharts](https://echarts.apache.org) - Powerful charting library
 
-```- [Google Gemini](https://ai.google.dev/) - Gemini Pro API for AI features
+```- [Groq](https://groq.com/) - Ultra-fast AI inference with Moonshot Kimi K2
 
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
 
@@ -468,7 +474,7 @@ chartgenie/
 │   │   ├── analyze-dataset/   # Edge Function for dataset analysis
 │   │   │   └── index.ts       # Analyzes CSV, generates suggestions
 │   │   └── rag-query/         # Edge Function for AI chat
-│   │       └── index.ts       # RAG system with Gemini 2.0 Flash
+│   │       └── index.ts       # RAG system with Groq (Moonshot Kimi K2)
 │   ├── migrations/
 │   │   ├── 001_initial_schema.sql
 │   │   └── 20251105125718_add_suggested_questions.sql
@@ -549,7 +555,7 @@ The project includes 3 sample CSV files for testing:
 2. **Auto-analysis** → `analyze-dataset` Edge Function extracts schema, generates suggestions
 3. **User asks question** → Sent to `rag-query` Edge Function
 4. **RAG retrieves data** → Fetches full CSV, schema, and statistics
-5. **AI processes** → Gemini 2.0 Flash analyzes with comprehensive prompt
+5. **AI processes** → Groq (Moonshot Kimi K2) analyzes with comprehensive prompt
 6. **Response generated** → Either TEXT (analysis) or VIZ (chart specification)
 7. **UI renders** → Formatted text or ECharts visualization
 
@@ -565,14 +571,14 @@ The RAG system uses a **200+ line system prompt** with:
 - Critical rules and best practices
 
 **Configuration:**
-- Model: `gemini-2.0-flash-exp`
+- Model: `moonshotai/kimi-k2-instruct-0905` (via Groq)
 - Temperature: 0.1 (very precise)
 - Max Tokens: 1024 (detailed answers)
 - Top P: 0.9
 
 ### Fallback System
 
-If Gemini API fails, an intelligent rule-based fallback:
+If Groq API fails, an intelligent rule-based fallback:
 - Performs actual calculations on data
 - Detects question intent (average, count, max, min, unique)
 - Returns formatted text with real statistics
@@ -590,7 +596,7 @@ If Gemini API fails, an intelligent rule-based fallback:
 4. Add environment variables:
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`
-   - `VITE_GEMINI_API_KEY`
+   - `VITE_GROQ_API_KEY` (optional - for frontend AI features)
 5. Click "Deploy"
 
 ### Supabase Edge Functions (Backend)
@@ -599,7 +605,8 @@ Edge Functions are deployed via Supabase CLI:
 ```bash
 npx supabase functions deploy analyze-dataset
 npx supabase functions deploy rag-query
-npx supabase secrets set GEMINI_API_KEY=your_key_here
+npx supabase secrets set GROQ_API_KEY=your_key_here
+npx supabase secrets set GROQ_MODEL=moonshotai/kimi-k2-instruct-0905
 ```
 
 ---
@@ -619,7 +626,7 @@ npx supabase secrets set GEMINI_API_KEY=your_key_here
 - Check that data is loaded (Network tab)
 
 **3. AI not responding**
-- Verify `GEMINI_API_KEY` is set in Supabase secrets
+- Verify `GROQ_API_KEY` and `GROQ_MODEL` are set in Supabase secrets
 - Check Edge Function logs in Supabase dashboard
 - Ensure you have API quota remaining
 
@@ -655,7 +662,7 @@ This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- **Google Gemini** - AI-powered data analysis
+- **Groq & Moonshot AI** - Ultra-fast AI-powered data analysis
 - **Supabase** - Backend infrastructure
 - **Apache ECharts** - Beautiful visualizations
 - **shadcn/ui** - Accessible components
@@ -681,7 +688,7 @@ Future enhancements:
 
 <div align="center">
 
-**Made with ❤️ using React, Supabase & Google Gemini**
+**Made with ❤️ using React, Supabase & Groq AI**
 
 ⭐ Star us on GitHub | 🐛 Report Bug | 💡 Request Feature
 

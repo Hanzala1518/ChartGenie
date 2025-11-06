@@ -7,9 +7,9 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY')
-const GEMINI_MODEL = 'gemini-1.5-flash'
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`
+const GROQ_API_KEY = Deno.env.get('GROQ_API_KEY')
+const GROQ_MODEL = Deno.env.get('GROQ_MODEL') || 'moonshotai/kimi-k2-instruct-0905'
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
 
 /**
  * Intelligent column type detection
@@ -97,14 +97,14 @@ function detectColumnType(columnName: string, values: any[]): string {
 }
 
 /**
- * Generate smart suggested questions using Gemini AI
+ * Generate smart suggested questions using Groq AI
  */
 async function generateSuggestedQuestions(columnSchema: any, sampleData: any[]): Promise<string[]> {
   // Default fallback questions (rule-based)
   const defaultQuestions = generateDefaultQuestions(columnSchema)
   
-  if (!GEMINI_API_KEY) {
-    console.log('⚠️ No Gemini API key, using default questions')
+  if (!GROQ_API_KEY) {
+    console.log('⚠️ No Groq API key, using default questions')
     return defaultQuestions
   }
 
@@ -134,28 +134,35 @@ Generate 4 questions that:
 Return ONLY a JSON array of 4 strings. No explanations.
 Example: ["show sales by region", "profit trend over time", "compare sales and profit", "market share breakdown"]`
 
-    const response = await fetch(GEMINI_API_URL, {
+    const response = await fetch(GROQ_API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROQ_API_KEY}`
+      },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 512,
-        }
+        model: GROQ_MODEL,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: 512,
       }),
     })
 
     if (!response.ok) {
-      console.error('❌ Gemini API error:', response.status)
+      console.error('❌ Groq API error:', response.status)
       return defaultQuestions
     }
 
     const data = await response.json()
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text
+    const text = data.choices?.[0]?.message?.content
 
     if (!text) {
-      console.error('❌ No text in Gemini response')
+      console.error('❌ No text in Groq response')
       return defaultQuestions
     }
 
@@ -269,7 +276,7 @@ serve(async (req) => {
     // Get preview data (first 100 rows)
     const previewData = rows.slice(0, 100)
 
-    // Generate smart suggested questions using Gemini
+    // Generate smart suggested questions using Groq
     console.log('🤖 Generating smart suggested questions...')
     const suggestedQuestions = await generateSuggestedQuestions(columnSchema, rows)
     console.log('✅ Suggested questions:', suggestedQuestions)

@@ -188,7 +188,7 @@ import { Button } from '@/components/ui/Button'
 
    cp .env.example .env- Create custom utilities in `index.css` for reusable styles
 
-   # Fill in your Supabase and Gemini API keys- Use `cn()` utility for conditional classes
+   # Fill in your Supabase and Groq API keys- Use `cn()` utility for conditional classes
 
    ```- Follow mobile-first responsive design
 
